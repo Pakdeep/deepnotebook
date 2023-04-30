@@ -4,7 +4,6 @@ import { Link, useLocation } from "react-router-dom";
 export default function Navbar() {
   let location=useLocation();
   useEffect(()=>{
-    console.log(location)
   },[location])
   return (
     <nav className="navbar navbar-expand-lg bg-dark navbar-dark">
@@ -36,7 +35,9 @@ export default function Navbar() {
               </Link>
             </li>
           </ul>
-          <form className="d-flex" role="search">
+          <form className="d-flex" role="search" onSubmit={(e)=>{
+            e.preventDefault();
+          }}>
             <input
               className="form-control me-2"
               type="search"

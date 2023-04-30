@@ -2,20 +2,20 @@ import React, { useContext } from "react";
 import noteContext from "../context/notes/noteContext";
 const NoteItem = (props) => {
   const context = useContext(noteContext);
-  const { deleteNote,editNote } = context;
-  const { note } = props;
+  const { deleteNote } = context;
+  const { noteItem,updateNote } = props;
   const handleDelete = () => {
-    deleteNote(note._id);
+    deleteNote(noteItem._id);
   };
-  const handleEdit = () => {
-    editNote(note._id,note.title,note.note,note.tag)
+  const handleUpdate = () => {
+    updateNote(noteItem)
   };
   return (
     <div className="col-md-4 my-3">
       <div className="card">
         <div className="card-body">
-          <h5 className="card-title p-1">{note.title}</h5>
-          <p className="card-text p-1">{note.note}</p>
+          <h5 className="card-title p-1">{noteItem.title}</h5>
+          <p className="card-text p-1">{noteItem.note}</p>
           <div className="buttons d-flex justify-content-between mt-3">
             <button
               style={{ background: "none", border: "none" }}
@@ -25,7 +25,7 @@ const NoteItem = (props) => {
             </button>
             <button
               style={{ background: "none", border: "none" }}
-              onClick={handleEdit}
+              onClick={handleUpdate}
             >
               {" "}
               <i className="fa-solid fa-pen-to-square fa-lg"></i>
